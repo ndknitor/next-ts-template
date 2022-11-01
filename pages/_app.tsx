@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/Globals.css'
 import type { AppProps } from 'next/app'
 import Provider from '../shared/context/Provider';
 import { AxiosInterceptor } from '../shared/components/AxiosInterceptor';

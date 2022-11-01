@@ -1,5 +1,5 @@
 import React, { Fragment, PropsWithChildren, useContext } from 'react'
-import Context from '../context/Context';
+import Context from '../shared/context/Context';
 interface Props extends PropsWithChildren<{}> {
     roles?: string[];
 }

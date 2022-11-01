@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import React, { PropsWithChildren, useContext, useEffect, useReducer, } from 'react'
-import { forbiddenRedirect } from '../../utils/Redirect';
-import Context from '../context/Context'
+import { forbiddenRedirect } from '../utils/Redirect';
+import Context from '../shared/context/Context'
 interface Props extends PropsWithChildren {
     forbiddenRedirect: string;
 }
