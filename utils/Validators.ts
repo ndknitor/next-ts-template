@@ -22,29 +22,7 @@ export function IsFile(options: IsFileOptions, validationOptions?: ValidationOpt
         });
     }
 }
-export function MinFileSize(minMB: number, validationOptions?: ValidationOptions) {
-    return function (object: Object, propertyName: string) {
-        return registerDecorator({
-            propertyName: 'minFileSize',
-            target: object.constructor,
-            constraints: [],
-            options: validationOptions,
-            validator: {
-                validate(value: any, args: ValidationArguments) {
-                    const target = value as File;
-                    if (!target) {
-                        return false;
-                    }
-                    if (minMB * 1024 * 1024 < target.size) {
-                        return false;
-                    }
-                    return true;
-                }
-            }
-        }
-        );
-    }
-}
+
 export function MaxFileSize(maxMB: number, validationOptions?: ValidationOptions) {
     return function (object: Object, propertyName: string) {
         return registerDecorator({
@@ -59,6 +37,30 @@ export function MaxFileSize(maxMB: number, validationOptions?: ValidationOptions
                         return false;
                     }
                     if (maxMB * 1024 * 1024 > target.size) {
+                        return false;
+                    }
+                    return true;
+                }
+            }
+        }
+        );
+    }
+}
+
+export function MinFileSize(minMB: number, validationOptions?: ValidationOptions) {
+    return function (object: Object, propertyName: string) {
+        return registerDecorator({
+            propertyName: 'minFileSize',
+            target: object.constructor,
+            constraints: [],
+            options: validationOptions,
+            validator: {
+                validate(value: any, args: ValidationArguments) {
+                    const target = value as File;
+                    if (!target) {
+                        return false;
+                    }
+                    if (minMB * 1024 * 1024 < target.size) {
                         return false;
                     }
                     return true;
