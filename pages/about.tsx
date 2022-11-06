@@ -1,8 +1,12 @@
+import Link from 'next/link'
 import React from 'react'
 
 function About() {
   return (
-    <div>about</div>
+    <>
+      <h1>About</h1>
+      <Link href={"/"}>Index</Link>
+    </>
   )
 }
 

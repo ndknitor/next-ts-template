@@ -4,19 +4,13 @@ import React, { useEffect, useState } from 'react'
 import SignInRequest from '../objects/request/SignInRequest';
 import useAuth from '../shared/context/hook/useAuth';
 import styles from '../styles/Index.module.css';
-interface Props {
-  res: string;
-}
-export function getServerSideProps() {
-  return { props: { res: '<script>alert("dit me may");</script>' } };
-}
-function Index({ res }: Props) {
+function Index() {
   const { setAuthorize, authenticated, roles } = useAuth();
-  const [r, setR] = useState<string>(res);
+  const [r, setR] = useState<string>('<script>alert("dit me may");</script>');
   const [request] = useState(new SignInRequest());
   const [key, setKey] = useState(0);
   useEffect(() => {
-    const r = setR(res);
+
   }, []);
 
   return (
@@ -43,6 +37,8 @@ function Index({ res }: Props) {
         <button onClick={e => setAuthorize(["User"])}>Authorize</button>
         <br />
         <button onClick={e => setAuthorize(false)}>Unauthorize</button>
+        <br />
+        <input type="file"/>
         <br />
         <Link href={'/about'}>About</Link>
         <br />
