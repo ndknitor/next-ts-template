@@ -1,10 +1,10 @@
 import React, { Fragment, PropsWithChildren, useContext } from 'react'
-import Context from '../shared/context/Context';
+import useAuth from './hook/useAuth';
 interface Props extends PropsWithChildren<{}> {
     roles?: string[];
 }
 export default function AuthorizeView(props: Props) {
-    const { authenticated, roles } = useContext(Context);
+    const { authenticated, roles } = useAuth();
     const isInRole = () => {
         if (!props.roles) {
             return true;

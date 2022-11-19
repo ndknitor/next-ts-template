@@ -1,14 +1,12 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import React from 'react';
 import { PropsWithChildren, useEffect } from 'react'
-import useInit from '../context/hook/useInit';
 
 const appxios = axios.create({
     baseURL: ''
 })
 
 export function AxiosInterceptor({ children }: PropsWithChildren<{}>) {
-    useInit();
     useEffect(() => {
         const beforeRequest = (config: AxiosRequestConfig<any>) => {
 

@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
 import React, { PropsWithChildren, useContext, useEffect} from 'react'
 import { forbiddenRedirect } from '../utils/Redirect';
-import Context from '../shared/context/Context'
+import { AuthorizeContext } from './AuthorizeProvider';
 interface Props extends PropsWithChildren {
     forbiddenRedirect: string;
 }
 function NonAuthorize(props: Props) {
-    const { authenticated, initLoading } = useContext(Context);
+    const { authenticated, initLoading } = useContext(AuthorizeContext);
     const { replace } = useRouter();
     useEffect(() => {
         if (!initLoading) {

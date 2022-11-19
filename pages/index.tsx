@@ -1,16 +1,18 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import useAuth from '../libs/hook/useAuth';
 import SignInRequest from '../objects/request/SignInRequest';
-import useAuth from '../shared/context/hook/useAuth';
+import Context from '../shared/context/Context';
 import styles from '../styles/Index.module.css';
+
 function Index() {
   const { setAuthorize, authenticated, roles } = useAuth();
-  const [r, setR] = useState<string>('<script>alert("dit me may");</script>');
+  const [r, setR] = useState<string>("<srcipt>alert('dit me may')</srcipt>");
   const [request] = useState(new SignInRequest());
   const [key, setKey] = useState(0);
+  const {count, setCount} = useContext(Context);
   useEffect(() => {
-
   }, []);
 
   return (
@@ -38,12 +40,15 @@ function Index() {
         <br />
         <button onClick={e => setAuthorize(false)}>Unauthorize</button>
         <br />
-        <input type="file"/>
+        <input type="file" />
         <br />
         <Link href={'/about'}>About</Link>
         <br />
         <Link href={"/render/1"}>Render</Link>
         <h1>{r}</h1>
+        <button onClick={() => setCount(count + 1)}>Increase counter</button>
+        <button onClick={() => setCount(count - 1)}>Decrease counter</button>
+        <h4>Count : {count}</h4>
       </>
     </>
   )

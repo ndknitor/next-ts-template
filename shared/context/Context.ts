@@ -1,34 +1,13 @@
 import { createContext, Dispatch, SetStateAction, useState } from "react"
 export class Store {
-    initLoading: boolean = true;
-    setInitLoading: Dispatch<SetStateAction<boolean>> = () => { };
-
-    authenticated: boolean = false;
-    roles: string[] = [];
-    setAuthorize : (scheme: string[] | boolean) => void = () => {};
+    count : number = 0;
+    setCount : Dispatch<SetStateAction<number>> = () => { };
 }
 export const useProvider: () => Store = () => {
-    const [initLoading, setInitLoading] = useState<boolean>(true);
-    const [authenticated, setAuthenticated] = useState<boolean>(false);
-    const [roles, setRoles] = useState<string[]>([]);
-    const setAuthorize = (scheme: string[] | boolean) => {
-        if (!(typeof scheme == "boolean")) {
-            setAuthenticated(true);
-            setRoles(scheme);
-        }
-        else
-        {
-            setAuthenticated(scheme);
-            setRoles([]);
-        }
-    }
+    const [count, setCount] = useState(0);
     return {
-        initLoading,
-        setInitLoading,
-
-        authenticated,
-        roles,
-        setAuthorize
+        count,
+        setCount
     };
 }
 const Context = createContext<Store>(new Store());
